@@ -34,14 +34,14 @@ import {
   Description as DescriptionIcon,
 } from '@mui/icons-material';
 
-interface ImpactOnOrganization {
+interface impactOnOrganization {
   change: string;
   impact: string;
 }
 
 interface AnalysisResponse {
   mainChanges: string[];
-  ImpactOnOrganization: ImpactOnOrganization[];
+  impactOnOrganization: impactOnOrganization[];
   recommendations: string[];
   summary: string;
   model: string;
@@ -98,6 +98,7 @@ const LegislativeAnalysisApp: React.FC = () => {
 
       const data = await res.json();
       setResponse(data);
+      console.log(data);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Něco se pokazilo';
       setError(errorMessage);
@@ -257,7 +258,7 @@ const LegislativeAnalysisApp: React.FC = () => {
               </AccordionSummary>
               <AccordionDetails>
                 <Stack spacing={2}>
-                  {response.ImpactOnOrganization?.map((item, idx) => (
+                  {response.impactOnOrganization?.map((item, idx) => (
                     <Card key={idx} variant="outlined">
                       <CardContent>
                         <Typography variant="subtitle1" fontWeight="bold" color="primary">
